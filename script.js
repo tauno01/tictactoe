@@ -113,9 +113,19 @@
 
     const startButton = document.getElementById('start-game');
     startButton.addEventListener('click', () => {
+        const userName = document.getElementById('user-name');
+        const span = document.getElementsByTagName('span')[0];
+        if(userName.value === '') {
+            userName.classList.add('input-error');
+            span.classList.add('error-msg');
+            return;
+        } else {
+            userName.classList.remove('input-error');
+            span.classList.remove('error-msg');
+        }
+
         startButton.disabled = true;
         startButton.classList.add('disabled');
-        const userName = document.getElementById('user-name');
         userName.disabled = true;
         const user = Player(userName.value, 'X');
         const opponent = Player('Opponent', '0');
